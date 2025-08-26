@@ -6,7 +6,6 @@ import java.awt.event.*;
 import java.awt.geom.AffineTransform;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import javax.swing.*;
 
@@ -47,13 +46,13 @@ public class PlanificacionDeDisco extends JFrame{
         Font arial = new Font("Arial", Font.BOLD, 15);
         Font consolas = new Font("Consolas", Font.CENTER_BASELINE, 15);
         //ArrayList
-        cad = new ArrayList();
-        fcfsList = new ArrayList();
-        c_scanList = new ArrayList();
-        sstfList = new ArrayList();
-        scanList = new ArrayList();
-        lookList = new ArrayList();
-        c_lookList = new ArrayList();
+        cad = new ArrayList<>();
+        fcfsList = new ArrayList<>();
+        c_scanList = new ArrayList<>();
+        sstfList = new ArrayList<>();
+        scanList = new ArrayList<>();
+        lookList = new ArrayList<>();
+        c_lookList = new ArrayList<>();
         //Archivos
         guardarEjercicio = new JMenuItem("Guardar");
         cargarEjercicio = new JMenuItem("Cargar");
@@ -185,7 +184,7 @@ public class PlanificacionDeDisco extends JFrame{
                         int rectWidth = (cad.get(0).getPistas() * 600) / 200;
                         int x = (canvasWidth - rectWidth) / 2;
                         int y = 10;
-                        ArrayList<Integer> posicionesXArraw = new ArrayList();
+                        ArrayList<Integer> posicionesXArraw = new ArrayList<Integer>();
                         g.setColor(Color.BLACK);
                         g.fillRect(x, y, rectWidth, 20);
 
@@ -230,7 +229,7 @@ public class PlanificacionDeDisco extends JFrame{
                         int rectWidth = (cad.get(0).getPistas() * 600) / 200;
                         int x = (canvasWidth - rectWidth) / 2;
                         int y = 10;
-                        ArrayList<Integer> posicionesXArraw = new ArrayList();
+                        ArrayList<Integer> posicionesXArraw = new ArrayList<Integer>();
                         g.setColor(Color.BLACK);
                         g.fillRect(x, y, rectWidth, 20);
 
@@ -274,7 +273,7 @@ public class PlanificacionDeDisco extends JFrame{
                         int rectWidth = (cad.get(0).getPistas() * 600) / 200;
                         int x = (canvasWidth - rectWidth) / 2;
                         int y = 10;
-                        ArrayList<Integer> posicionesXArraw = new ArrayList();
+                        ArrayList<Integer> posicionesXArraw = new ArrayList<Integer>();
                         g.setColor(Color.BLACK);
                         g.fillRect(x, y, rectWidth, 20);
 
@@ -319,7 +318,7 @@ public class PlanificacionDeDisco extends JFrame{
                         int rectWidth = (cad.get(0).getPistas() * 600) / 200;
                         int x = (canvasWidth - rectWidth) / 2;
                         int y = 10;
-                        ArrayList<Integer> posicionesXArraw = new ArrayList();
+                        ArrayList<Integer> posicionesXArraw = new ArrayList<Integer>();
                         g.setColor(Color.BLACK);
                         g.fillRect(x, y, rectWidth, 20);
 
@@ -364,7 +363,7 @@ public class PlanificacionDeDisco extends JFrame{
                         int rectWidth = (cad.get(0).getPistas() * 600) / 200;
                         int x = (canvasWidth - rectWidth) / 2;
                         int y = 10;
-                        ArrayList<Integer> posicionesXArraw = new ArrayList();
+                        ArrayList<Integer> posicionesXArraw = new ArrayList<Integer>();
                         g.setColor(Color.BLACK);
                         g.fillRect(x, y, rectWidth, 20);
 
@@ -409,7 +408,7 @@ public class PlanificacionDeDisco extends JFrame{
                         int rectWidth = (cad.get(0).getPistas() * 600) / 200;
                         int x = (canvasWidth - rectWidth) / 2;
                         int y = 10;
-                        ArrayList<Integer> posicionesXArraw = new ArrayList();
+                        ArrayList<Integer> posicionesXArraw = new ArrayList<Integer>();
                         g.setColor(Color.BLACK);
                         g.fillRect(x, y, rectWidth, 20);
 
