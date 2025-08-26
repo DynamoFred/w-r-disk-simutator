@@ -1025,7 +1025,7 @@ public class PlanificacionDeDisco extends JFrame{
                 } else {
                     JOptionPane.showMessageDialog(null, "Ingrese datos");
                 }
-           }
+            }
         });
         
         reset.addActionListener(new ActionListener() {
