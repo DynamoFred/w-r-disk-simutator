@@ -1,0 +1,8 @@
+Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
+
+Copyright (c) 2025 [Tu Nombre]
+
+Este proyecto fue desarrollado con fines académicos y se publica únicamente para su visualización y consulta.
+No se concede permiso para copiar, modificar, distribuir o utilizar este código con fines comerciales.
+Para más detalles sobre esta licencia, visite:
+https://creativecommons.org/licenses/by-nc-nd/4.0/
