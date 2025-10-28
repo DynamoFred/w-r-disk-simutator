@@ -10,9 +10,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.util.prefs.Preferences;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 public class Archivos {
 
@@ -24,7 +27,23 @@ public class Archivos {
         this.cad = cad;
     }
 
+    @SuppressWarnings("UseSpecificCatch")
+    private void setWindowslookAndFeel() {
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Windows".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    SwingUtilities.updateComponentTreeUI(new JFrame());
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            // Si no se puede establecer el look and feel de Windows, se ignora la excepción
+        }
+    }
+
     public void guardar() {
+        setWindowslookAndFeel();
         JFileChooser selectarch = new JFileChooser(preferences.get("lastSaveLocation", "C:\\Users\\USER\\Desktop"));
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos Enlazados (*.pdd)", "pdd");
         selectarch.setFileFilter(filtro);
@@ -55,6 +74,7 @@ public class Archivos {
     }
 
     public void cargar() {
+        setWindowslookAndFeel();
         File archselect;
         JFileChooser selectarch = new JFileChooser(preferences.get("lastSaveLocation", "C:\\Users\\USER\\Desktop"));
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("*.pdd", "pdd");

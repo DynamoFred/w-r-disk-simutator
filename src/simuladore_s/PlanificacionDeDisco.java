@@ -184,7 +184,7 @@ public class PlanificacionDeDisco extends JFrame{
                         int rectWidth = (cad.get(0).getPistas() * 600) / 200;
                         int x = (canvasWidth - rectWidth) / 2;
                         int y = 10;
-                        ArrayList<Integer> posicionesXArraw = new ArrayList<Integer>();
+                        ArrayList<Integer> posicionesXArraw = new ArrayList<>();
                         g.setColor(Color.BLACK);
                         g.fillRect(x, y, rectWidth, 20);
 
@@ -229,7 +229,7 @@ public class PlanificacionDeDisco extends JFrame{
                         int rectWidth = (cad.get(0).getPistas() * 600) / 200;
                         int x = (canvasWidth - rectWidth) / 2;
                         int y = 10;
-                        ArrayList<Integer> posicionesXArraw = new ArrayList<Integer>();
+                        ArrayList<Integer> posicionesXArraw = new ArrayList<>();
                         g.setColor(Color.BLACK);
                         g.fillRect(x, y, rectWidth, 20);
 
@@ -273,7 +273,7 @@ public class PlanificacionDeDisco extends JFrame{
                         int rectWidth = (cad.get(0).getPistas() * 600) / 200;
                         int x = (canvasWidth - rectWidth) / 2;
                         int y = 10;
-                        ArrayList<Integer> posicionesXArraw = new ArrayList<Integer>();
+                        ArrayList<Integer> posicionesXArraw = new ArrayList<>();
                         g.setColor(Color.BLACK);
                         g.fillRect(x, y, rectWidth, 20);
 
@@ -318,7 +318,7 @@ public class PlanificacionDeDisco extends JFrame{
                         int rectWidth = (cad.get(0).getPistas() * 600) / 200;
                         int x = (canvasWidth - rectWidth) / 2;
                         int y = 10;
-                        ArrayList<Integer> posicionesXArraw = new ArrayList<Integer>();
+                        ArrayList<Integer> posicionesXArraw = new ArrayList<>();
                         g.setColor(Color.BLACK);
                         g.fillRect(x, y, rectWidth, 20);
 
@@ -363,7 +363,7 @@ public class PlanificacionDeDisco extends JFrame{
                         int rectWidth = (cad.get(0).getPistas() * 600) / 200;
                         int x = (canvasWidth - rectWidth) / 2;
                         int y = 10;
-                        ArrayList<Integer> posicionesXArraw = new ArrayList<Integer>();
+                        ArrayList<Integer> posicionesXArraw = new ArrayList<>();
                         g.setColor(Color.BLACK);
                         g.fillRect(x, y, rectWidth, 20);
 
@@ -408,7 +408,7 @@ public class PlanificacionDeDisco extends JFrame{
                         int rectWidth = (cad.get(0).getPistas() * 600) / 200;
                         int x = (canvasWidth - rectWidth) / 2;
                         int y = 10;
-                        ArrayList<Integer> posicionesXArraw = new ArrayList<Integer>();
+                        ArrayList<Integer> posicionesXArraw = new ArrayList<>();
                         g.setColor(Color.BLACK);
                         g.fillRect(x, y, rectWidth, 20);
 
@@ -454,621 +454,591 @@ public class PlanificacionDeDisco extends JFrame{
         canvas.setBounds(175, 55, 700, 500);
         add(canvas);
         
-        add.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    if (cad.isEmpty()) {
-                        boolean repetirCiclo = false;
-                        String elementosInput = "";
-                        int pistas, elementos, cabezal, intElemento = -1;
-                        elementos = Integer.parseInt(nElementos.getText());
-                        pistas = Integer.parseInt(nPistas.getText());
-                        cabezal = Integer.parseInt(nCabezal.getText());
-                        Ejercicio el = new Ejercicio();
-                        
-                        if (elementos > 0 && elementos <= 13 && pistas > 0 && pistas <= 200) {
-                            if (cabezal > 0 && cabezal <= pistas) {
-                                int[] elem = new int[elementos];
-                                el.setCabezal(cabezal);
-                                el.setPistas(pistas);
-                                for (int i = 0; i < elementos; i++) {
-                                    do {
-                                        try {
-                                            repetirCiclo = false;
-                                            elementosInput = JOptionPane.showInputDialog("Elemento " + (i + 1));
-                                            if (elementosInput == null) {
-                                                break;
-                                            }
-                                            intElemento = Integer.parseInt(elementosInput);
-                                            if (intElemento > 0 && intElemento < pistas) {
-                                                for (int j = 0; j < elem.length; j++) {
-                                                    if (elem[j] == intElemento) {
-                                                        JOptionPane.showMessageDialog(null, "Ese elemento ya fue ingresado");
-                                                        repetirCiclo = true;
-                                                    }
-                                                }
-                                            }else{
-                                                JOptionPane.showMessageDialog(null, "Elemento fuera de los límites");
-                                                repetirCiclo = true;
-                                            }
-                                        } catch (HeadlessException | NumberFormatException E) {
-                                            JOptionPane.showMessageDialog(null, "Ingrese Datos Numéricos o No Deje Espacios Vacíos");
-                                            intElemento = -1; // Reiniciar el valor para volver a pedirlo
+        add.addActionListener((ActionEvent e) -> {
+            try {
+                if (cad.isEmpty()) {
+                    boolean repetirCiclo = false;
+                    String elementosInput = "";
+                    int pistas, elementos, cabezal, intElemento = -1;
+                    elementos = Integer.parseInt(nElementos.getText());
+                    pistas = Integer.parseInt(nPistas.getText());
+                    cabezal = Integer.parseInt(nCabezal.getText());
+                    Ejercicio el = new Ejercicio();
+                    
+                    if (elementos > 0 && elementos <= 13 && pistas > 0 && pistas <= 200) {
+                        if (cabezal > 0 && cabezal <= pistas) {
+                            int[] elem = new int[elementos];
+                            el.setCabezal(cabezal);
+                            el.setPistas(pistas);
+                            for (int i = 0; i < elementos; i++) {
+                                do {
+                                    try {
+                                        repetirCiclo = false;
+                                        elementosInput = JOptionPane.showInputDialog("Elemento " + (i + 1));
+                                        if (elementosInput == null) {
+                                            break;
                                         }
-                                    } while (repetirCiclo || intElemento == -1);
-                                    if (elementosInput == null) {
-                                        break;
+                                        intElemento = Integer.parseInt(elementosInput);
+                                        if (intElemento > 0 && intElemento < pistas) {
+                                            for (int j = 0; j < elem.length; j++) {
+                                                if (elem[j] == intElemento) {
+                                                    JOptionPane.showMessageDialog(null, "Ese elemento ya fue ingresado");
+                                                    repetirCiclo = true;
+                                                }
+                                            }
+                                        }else{
+                                            JOptionPane.showMessageDialog(null, "Elemento fuera de los límites");
+                                            repetirCiclo = true;
+                                        }
+                                    } catch (HeadlessException | NumberFormatException E) {
+                                        JOptionPane.showMessageDialog(null, "Ingrese Datos Numéricos o No Deje Espacios Vacíos");
+                                        intElemento = -1; // Reiniciar el valor para volver a pedirlo
                                     }
-                                    elem[i] = intElemento;
+                                } while (repetirCiclo || intElemento == -1);
+                                if (elementosInput == null) {
+                                    break;
                                 }
-                                
-                                if (elementosInput != null) {
-                                    el.setElementos(elem);
-                                    cad.add(el);
-                                }else{
-                                    cad.clear();
-                                }
-                                
-                                nElementos.setText("");
-                                nPistas.setText("");
-                                nCabezal.setText("");
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Valor cabezal incorrecto");
+                                elem[i] = intElemento;
                             }
+                            
+                            if (elementosInput != null) {
+                                el.setElementos(elem);
+                                cad.add(el);
+                            }else{
+                                cad.clear();
+                            }
+                            
+                            nElementos.setText("");
+                            nPistas.setText("");
+                            nCabezal.setText("");
                         } else {
-                            if (elementos <= 0 || elementos > 13) {
-                                JOptionPane.showMessageDialog(null, "Limite de 13 elementos");
-                            }
-                            if (pistas <= 0 || pistas > 200) {
-                                JOptionPane.showMessageDialog(null, "Limite de 200 Pistas");
-                            }
+                            JOptionPane.showMessageDialog(null, "Valor cabezal incorrecto");
+                        }
+                    } else {
+                        if (elementos <= 0 || elementos > 13) {
+                            JOptionPane.showMessageDialog(null, "Limite de 13 elementos");
+                        }
+                        if (pistas <= 0 || pistas > 200) {
+                            JOptionPane.showMessageDialog(null, "Limite de 200 Pistas");
                         }
                     }
-                } catch (HeadlessException | NumberFormatException E) {
-                    JOptionPane.showMessageDialog(null, "Ingrese Datos Numericos o No Deje Espacios Vacios");
                 }
+            } catch (HeadlessException | NumberFormatException E) {
+                JOptionPane.showMessageDialog(null, "Ingrese Datos Numericos o No Deje Espacios Vacios");
             }
         });
         
-        fcfs.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!cad.isEmpty()) {
-                    textAlgo.setText("FCFS");
-                    text.setText("");
-                    text1.setText("");
-                    fcfsList.clear();
-                    for (Ejercicio cad1 : cad) {
-                        Ejercicio ele = new Ejercicio();
-                        ele.setCabezal(cad1.getCabezal());
-                        ele.setPistas(cad1.getPistas());
-                        ele.setElementos(cad1.getElementos());
-                        fcfsList.add(ele);
-                    }
-                    //calcular diferencias}
-
-                    int index = 1;
-                    int[] diferencias = new int[fcfsList.get(0).getElementos().length];
-
-                    for (Ejercicio fcfsList1 : fcfsList) {
-                        diferencias[0] = Math.abs(fcfsList1.getCabezal() - fcfsList1.getElementos()[0]);
-                        for (int i = 0; i < fcfsList1.getElementos().length; i++) {
-                            if (index < fcfsList1.getElementos().length) {
-                                diferencias[index] = Math.abs(fcfsList1.getElementos()[i] - fcfsList1.getElementos()[i + 1]);
-                                index++;
-                            } else {
-                                break;
-                            }
-                        }
-                        fcfsList1.setDiferencia(diferencias);
-                    }
-                    int tot = 0;
-                    double prom = 0;
-                    for (Ejercicio fcfsList1 : fcfsList) {
-
-                        for (int i = 0; i < fcfsList1.getDiferencia().length; i++) {
-                            tot += fcfsList1.getDiferencia()[i];
-                        }
-                        prom = (double) tot / fcfsList1.getDiferencia().length;
-                    }
-
-                    DecimalFormat df = new DecimalFormat("#.##");
-                    String promedioFormato = df.format(prom);
-
-                    total.setText("Total : " + tot);
-                    promedio.setText("Promedio : " + (promedioFormato));
-                    canvas.repaint();
-                }else
-                    JOptionPane.showMessageDialog(null, "Ingrese datos");
-            }
-        });
-        
-        sstf.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!cad.isEmpty()) {
+        fcfs.addActionListener((ActionEvent e) -> {
+            if (!cad.isEmpty()) {
+                textAlgo.setText("FCFS");
+                text.setText("");
+                text1.setText("");
+                fcfsList.clear();
+                for (Ejercicio cad1 : cad) {
                     Ejercicio ele = new Ejercicio();
-                    textAlgo.setText("SSTF");
-                    text.setText("");
-                    text1.setText("");
-                    sstfList.clear();
-
-                    int cabezal = cad.get(0).getCabezal();
-                    ele.setCabezal(cabezal);
-                    
-                    int[] pistassstf = new int[cad.get(0).getElementos().length];
-                    int[] diferencias = new int[cad.get(0).getElementos().length];
-                    ArrayList<Integer> pistas = new ArrayList<>();
-
-                    for (Ejercicio cad1 : cad) {
-                        for (int i = 0; i < cad1.getElementos().length; i++) {
-                            pistas.add(cad1.getElementos()[i]);
+                    ele.setCabezal(cad1.getCabezal());
+                    ele.setPistas(cad1.getPistas());
+                    ele.setElementos(cad1.getElementos());
+                    fcfsList.add(ele);
+                }
+                //calcular diferencias}
+                
+                int index = 1;
+                int[] diferencias = new int[fcfsList.get(0).getElementos().length];
+                
+                for (Ejercicio fcfsList1 : fcfsList) {
+                    diferencias[0] = Math.abs(fcfsList1.getCabezal() - fcfsList1.getElementos()[0]);
+                    for (int i = 0; i < fcfsList1.getElementos().length; i++) {
+                        if (index < fcfsList1.getElementos().length) {
+                            diferencias[index] = Math.abs(fcfsList1.getElementos()[i] - fcfsList1.getElementos()[i + 1]);
+                            index++;
+                        } else {
+                            break;
                         }
                     }
-
-                    // Ordenar
+                    fcfsList1.setDiferencia(diferencias);
+                }
+                int tot = 0;
+                double prom = 0;
+                for (Ejercicio fcfsList1 : fcfsList) {
                     
-                    int ind = 0;  // Inicializar ind fuera del bucle
-                    while (!pistas.isEmpty()) {
-                        int movimientoMinimo = Integer.MAX_VALUE;
-                        int pistaElegida = -1;
-
-                        for (int pista : pistas) {
-                            int movimiento = Math.abs(cabezal - pista);
+                    for (int i = 0; i < fcfsList1.getDiferencia().length; i++) {
+                        tot += fcfsList1.getDiferencia()[i];
+                    }
+                    prom = (double) tot / fcfsList1.getDiferencia().length;
+                }
+                
+                DecimalFormat df = new DecimalFormat("#.##");
+                String promedioFormato = df.format(prom);
+                
+                total.setText("Total : " + tot);
+                promedio.setText("Promedio : " + (promedioFormato));
+                canvas.repaint();
+            }else
+                JOptionPane.showMessageDialog(null, "Ingrese datos");
+        });
+        
+        sstf.addActionListener((ActionEvent e) -> {
+            if (!cad.isEmpty()) {
+                Ejercicio ele = new Ejercicio();
+                textAlgo.setText("SSTF");
+                text.setText("");
+                text1.setText("");
+                sstfList.clear();
+                
+                int cabezal = cad.get(0).getCabezal();
+                ele.setCabezal(cabezal);
+                
+                int[] pistassstf = new int[cad.get(0).getElementos().length];
+                int[] diferencias = new int[cad.get(0).getElementos().length];
+                ArrayList<Integer> pistas = new ArrayList<>();
+                
+                for (Ejercicio cad1 : cad) {
+                    for (int i = 0; i < cad1.getElementos().length; i++) {
+                        pistas.add(cad1.getElementos()[i]);
+                    }
+                }
+                
+                // Ordenar
+                
+                int ind = 0;  // Inicializar ind fuera del bucle
+                while (!pistas.isEmpty()) {
+                    int movimientoMinimo = Integer.MAX_VALUE;
+                    int pistaElegida = -1;
+                    
+                    for (int pista : pistas) {
+                        int movimiento = Math.abs(cabezal - pista);
+                        if (movimiento < movimientoMinimo) {
+                            movimientoMinimo = movimiento;
+                            
+                            pistaElegida = pista;
+                        }
+                    }
+                    
+                    cabezal = pistaElegida;
+                    pistassstf[ind] = pistaElegida;
+                    diferencias[ind] = movimientoMinimo;
+                    ind++;
+                    
+                    pistas.remove(Integer.valueOf(pistaElegida));
+                }
+                ele.setDiferencia(diferencias);
+                ele.setElementos(pistassstf);
+                sstfList.add(ele);
+                //Calcular
+                
+                int tot = 0;
+                double prom = 0;
+                for (Ejercicio sstfList1 : sstfList) {
+                    
+                    for (int i = 0; i < sstfList1.getDiferencia().length; i++) {
+                        tot += sstfList1.getDiferencia()[i];
+                    }
+                    prom = (double) tot / sstfList1.getDiferencia().length;
+                }
+                
+                DecimalFormat df = new DecimalFormat("#.##");
+                String promedioFormato = df.format(prom);
+                
+                total.setText("Total : " + tot);
+                promedio.setText("Promedio : " + (promedioFormato));
+                canvas.repaint();
+            } else
+                JOptionPane.showMessageDialog(null, "Ingrese datos");
+        });
+        
+        c_scan.addActionListener((ActionEvent e) -> {
+            if (!cad.isEmpty()) {
+                Ejercicio ele = new Ejercicio();
+                textAlgo.setText("C-SCAN");
+                text.setText("");
+                text1.setText("");
+                c_scanList.clear();
+                
+                int cabezal = cad.get(0).getCabezal();
+                ele.setCabezal(cabezal);
+                
+                ArrayList<Integer> pistas = new ArrayList<>();
+                
+                for (Ejercicio cad1 : cad) {
+                    for (int i = 0; i < cad1.getElementos().length; i++) {
+                        pistas.add(cad1.getElementos()[i]);
+                    }
+                }
+                if (!pistas.contains(0)) {
+                    pistas.add(0);
+                }
+                if (!pistas.contains(cad.get(0).getPistas() - 1)) {
+                    pistas.add(cad.get(0).getPistas() - 1);
+                }
+                
+                int[] pistasc_scan = new int[pistas.size()];
+                int[] diferencias = new int[pistas.size()];
+                // Ordenar las pistas de manera ascendente
+                Collections.sort(pistas);
+                int ind = 0;
+                while (!pistas.isEmpty()) {
+                    int movimientoMinimo = Integer.MAX_VALUE;
+                    int pistaElegida = -1;
+                    
+                    for (int pista : pistas) {
+                        if (pista >= cabezal) {
+                            int movimiento = pista - cabezal;
                             if (movimiento < movimientoMinimo) {
                                 movimientoMinimo = movimiento;
-                                
                                 pistaElegida = pista;
                             }
                         }
-                        
-                        cabezal = pistaElegida;
-                        pistassstf[ind] = pistaElegida;
-                        diferencias[ind] = movimientoMinimo;
-                        ind++;
-
-                        pistas.remove(Integer.valueOf(pistaElegida));
-                    }
-                    ele.setDiferencia(diferencias);
-                    ele.setElementos(pistassstf);
-                    sstfList.add(ele);
-                    //Calcular
-                    
-                    int tot = 0;
-                    double prom = 0;
-                    for (Ejercicio sstfList1 : sstfList) {
-
-                        for (int i = 0; i < sstfList1.getDiferencia().length; i++) {
-                            tot += sstfList1.getDiferencia()[i];
-                        }
-                        prom = (double) tot / sstfList1.getDiferencia().length;
-                    }
-
-                    DecimalFormat df = new DecimalFormat("#.##");
-                    String promedioFormato = df.format(prom);
-
-                    total.setText("Total : " + tot);
-                    promedio.setText("Promedio : " + (promedioFormato));
-                    canvas.repaint();
-                } else
-                    JOptionPane.showMessageDialog(null, "Ingrese datos");
-            }
-        });
-        
-        c_scan.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!cad.isEmpty()) {
-                    Ejercicio ele = new Ejercicio();
-                    textAlgo.setText("C-SCAN");
-                    text.setText("");
-                    text1.setText("");
-                    c_scanList.clear();
-
-                    int cabezal = cad.get(0).getCabezal();
-                    ele.setCabezal(cabezal);
-                    
-                    ArrayList<Integer> pistas = new ArrayList<>();
-
-                    for (Ejercicio cad1 : cad) {
-                        for (int i = 0; i < cad1.getElementos().length; i++) {
-                            pistas.add(cad1.getElementos()[i]);
-                        }
-                    }
-                    if (!pistas.contains(0)) {
-                        pistas.add(0);
-                    }
-                    if (!pistas.contains(cad.get(0).getPistas() - 1)) {
-                        pistas.add(cad.get(0).getPistas() - 1);
                     }
                     
-                    int[] pistasc_scan = new int[pistas.size()];
-                    int[] diferencias = new int[pistas.size()];
-                    // Ordenar las pistas de manera ascendente
-                    Collections.sort(pistas);
-                    int ind = 0;
-                    while (!pistas.isEmpty()) {
-                        int movimientoMinimo = Integer.MAX_VALUE;
-                        int pistaElegida = -1;
-
-                        for (int pista : pistas) {
-                            if (pista >= cabezal) {
-                                int movimiento = pista - cabezal;
-                                if (movimiento < movimientoMinimo) {
-                                    movimientoMinimo = movimiento;
-                                    pistaElegida = pista;
-                                }
-                            }
-                        }
-
-                        if (pistaElegida == -1) {
-                            pistaElegida = pistas.get(0);
-                            movimientoMinimo = Math.abs(pistaElegida - cabezal); // Agregar el movimiento hacia el principio
-                        }
-
-                        cabezal = pistaElegida;
-                        pistasc_scan[ind] = pistaElegida;
-                        diferencias[ind] = movimientoMinimo;
-                        ind++;
-
-                        pistas.remove(Integer.valueOf(pistaElegida));
+                    if (pistaElegida == -1) {
+                        pistaElegida = pistas.get(0);
+                        movimientoMinimo = Math.abs(pistaElegida - cabezal); // Agregar el movimiento hacia el principio
                     }
-
-                    ele.setDiferencia(diferencias);
-                    ele.setElementos(pistasc_scan);
-                    c_scanList.add(ele);
-                    //Calcular
-
-                    int tot = 0;
-                    double prom = 0;
-                    for (Ejercicio c_scanList1 : c_scanList) {
-
-                        for (int i = 0; i < c_scanList1.getDiferencia().length; i++) {
-                            tot += c_scanList1.getDiferencia()[i];
-                        }
-                        prom = (double) tot / c_scanList1.getDiferencia().length;
-                    }
-
-                    DecimalFormat df = new DecimalFormat("#.##");
-                    String promedioFormato = df.format(prom);
-
-                    total.setText("Total : " + tot);
-                    promedio.setText("Promedio : " + (promedioFormato));
-                    canvas.repaint();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Ingrese datos");
+                    
+                    cabezal = pistaElegida;
+                    pistasc_scan[ind] = pistaElegida;
+                    diferencias[ind] = movimientoMinimo;
+                    ind++;
+                    
+                    pistas.remove(Integer.valueOf(pistaElegida));
                 }
-            }
-        });
-        
-        scan.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!cad.isEmpty()) {
-                    Ejercicio ele = new Ejercicio();
-                    textAlgo.setText("SCAN");
-                    text.setText("");
-                    text1.setText("");
-                    scanList.clear();
-                    int cabezal = cad.get(0).getCabezal();
-                    ele.setCabezal(cabezal);
-                    ArrayList<Integer> pistas = new ArrayList<>();
-
-                    for (Ejercicio cad1 : cad) {
-                        for (int i = 0; i < cad1.getElementos().length; i++) {
-                            pistas.add(cad1.getElementos()[i]);
-                        }
-                    }
-                    if (!pistas.contains(0)) {
-                        pistas.add(0);
-                    }
-                    if (!pistas.contains(cad.get(0).getPistas() - 1)) {
-                        pistas.add(cad.get(0).getPistas() - 1);
-                    }
+                
+                ele.setDiferencia(diferencias);
+                ele.setElementos(pistasc_scan);
+                c_scanList.add(ele);
+                //Calcular
+                
+                int tot = 0;
+                double prom = 0;
+                for (Ejercicio c_scanList1 : c_scanList) {
                     
-
-                    // Ordenar las pistas de manera ascendente
-                    Collections.sort(pistas);
-
-                    ArrayList<Integer> pistasHaciaAdelante = new ArrayList<>();
-                    ArrayList<Integer> pistasHaciaAtras = new ArrayList<>();
-
-                    for (int pista : pistas) {
-                        if (pista >= cabezal) {
-                            pistasHaciaAdelante.add(pista);
-                        } else {
-                            pistasHaciaAtras.add(pista);
-                        }
+                    for (int i = 0; i < c_scanList1.getDiferencia().length; i++) {
+                        tot += c_scanList1.getDiferencia()[i];
                     }
-
-                    // Ordenar la lista hacia adelante de manera ascendente
-                    Collections.sort(pistasHaciaAdelante);
-
-                    // Ordenar la lista hacia atrás de manera descendente
-                    Collections.sort(pistasHaciaAtras, Collections.reverseOrder());
-
-                    // Fusionar las listas
-                    ArrayList<Integer> pistasOrdenadas = new ArrayList<>(pistasHaciaAdelante);
-                    pistasOrdenadas.addAll(pistasHaciaAtras);
-                    
-                    int[] pistasscan = new int[pistasOrdenadas.size()];
-                    for (int i = 0; i < pistasOrdenadas.size(); i++) {
-                        pistasscan[i] = pistasOrdenadas.get(i);
-                    }
-                    
-                    ele.setElementos(pistasscan);
-                    scanList.add(ele);
-                    
-                    //calcular diferencias
-                    int index = 1;
-                    int[] diferencias = new int[pistasOrdenadas.size()];
-                    for (Ejercicio scanList1 : scanList) {
-                        diferencias[0] = Math.abs(scanList1.getCabezal() - scanList1.getElementos()[0]);
-                        for (int i = 0; i < scanList1.getElementos().length; i++) {
-                            if (index < scanList1.getElementos().length) {
-                                diferencias[index] = Math.abs(scanList1.getElementos()[i] - scanList1.getElementos()[i + 1]);
-                                index++;
-                            } else {
-                                break;
-                            }
-                        }
-                        scanList1.setDiferencia(diferencias);
-                    }
-                    
-                    // Asignar los resultados a tu objeto 'ele'
-                    ele.setDiferencia(diferencias);
-                    
-                    //Calcular
-                    int tot = 0;
-                    double prom = 0;
-                    for (Ejercicio scanList1 : scanList) {
-
-                        for (int i = 0; i < scanList1.getDiferencia().length; i++) {
-                            tot += scanList1.getDiferencia()[i];
-                        }
-                        prom = (double) tot / scanList1.getDiferencia().length;
-                    }
-
-                    DecimalFormat df = new DecimalFormat("#.##");
-                    String promedioFormato = df.format(prom);
-
-                    total.setText("Total : " + tot);
-                    promedio.setText("Promedio : " + (promedioFormato));
-                    canvas.repaint();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Ingrese datos");
+                    prom = (double) tot / c_scanList1.getDiferencia().length;
                 }
-            }
-        });
-        
-        c_look.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!cad.isEmpty()) {
-                    Ejercicio ele = new Ejercicio();
-                    textAlgo.setText("C-LOOK");
-                    text.setText("");
-                    text1.setText("");
-                    c_lookList.clear();
-                    int cabezal = cad.get(0).getCabezal();
-                    ele.setCabezal(cabezal);
-                    ArrayList<Integer> pistas = new ArrayList<>();
-
-                    for (Ejercicio cad1 : cad) {
-                        for (int i = 0; i < cad1.getElementos().length; i++) {
-                            pistas.add(cad1.getElementos()[i]);
-                        }
-                    }                    
-                    
-                    // Ordenar las pistas de manera ascendente
-                    Collections.sort(pistas);
-
-                    // Inicializar arrays con el tamaño correcto
-                    ArrayList<Integer> pistasHaciaAdelante = new ArrayList<>();
-                    ArrayList<Integer> pistasHaciaAtras = new ArrayList<>();
-
-                    for (int pista : pistas) {
-                        if (pista >= cabezal) {
-                            pistasHaciaAdelante.add(pista);
-                        } else {
-                            pistasHaciaAtras.add(pista);
-                        }
-                    }
-
-                    // Ordenar la lista hacia adelante de manera ascendente
-                    Collections.sort(pistasHaciaAdelante);
-
-                    // Ordenar la lista hacia atrás de manera ascendente
-                    Collections.sort(pistasHaciaAtras);
-
-                    // Fusionar las listas
-                    ArrayList<Integer> pistasOrdenadas = new ArrayList<>(pistasHaciaAdelante);
-                    pistasOrdenadas.addAll(pistasHaciaAtras);
-
-                    int[] pistasc_look = new int[pistasOrdenadas.size()];
-                    
-                    for (int i = 0; i < pistasOrdenadas.size(); i++) {
-                        pistasc_look[i] = pistasOrdenadas.get(i);
-                    }
-                    
-                    ele.setElementos(pistasc_look);
-                    c_lookList.add(ele);
-                    
-                    //calcular diferencias
-                    int index = 1;
-                    int[] diferencias = new int[pistasOrdenadas.size()];
-                    for (Ejercicio c_lookList1 : c_lookList) {
-                        diferencias[0] = Math.abs(c_lookList1.getCabezal() - c_lookList1.getElementos()[0]);
-                        for (int i = 0; i < c_lookList1.getElementos().length; i++) {
-                            if (index < c_lookList1.getElementos().length) {
-                                diferencias[index] = Math.abs(c_lookList1.getElementos()[i] - c_lookList1.getElementos()[i + 1]);
-                                index++;
-                            } else {
-                                break;
-                            }
-                        }
-                        c_lookList1.setDiferencia(diferencias);
-                    }
-                    // Asignar los resultados a tu objeto 'ele'
-                    ele.setDiferencia(diferencias);
-
-                    //Calcular
-                    int tot = 0;
-                    double prom = 0;
-                    for (Ejercicio c_lookList1 : c_lookList) {
-
-                        for (int i = 0; i < c_lookList1.getDiferencia().length; i++) {
-                            tot += c_lookList1.getDiferencia()[i];
-                        }
-                        prom = (double) tot / c_lookList1.getDiferencia().length;
-                    }
-
-                    DecimalFormat df = new DecimalFormat("#.##");
-                    String promedioFormato = df.format(prom);
-
-                    total.setText("Total : " + tot);
-                    promedio.setText("Promedio : " + (promedioFormato));
-                    canvas.repaint();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Ingrese datos");
-                }
-            }
-        });
-        
-        look.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(!cad.isEmpty()){
-                    Ejercicio ele = new Ejercicio();
-                    textAlgo.setText("LOOK");
-                    text.setText("");
-                    text1.setText("");
-                    lookList.clear();
-                    int cabezal = cad.get(0).getCabezal();
-                    ele.setCabezal(cabezal);
-                    ArrayList<Integer> pistas = new ArrayList<>();
-
-                    for (Ejercicio cad1 : cad) {
-                        for (int i = 0; i < cad1.getElementos().length; i++) {
-                            pistas.add(cad1.getElementos()[i]);
-                        }
-                    }
-
-                    // Ordenar las pistas de manera ascendente
-                    Collections.sort(pistas);
-
-                    ArrayList<Integer> pistasHaciaAdelante = new ArrayList<>();
-                    ArrayList<Integer> pistasHaciaAtras = new ArrayList<>();
-
-                    for (int pista : pistas) {
-                        if (pista >= cabezal) {
-                            pistasHaciaAdelante.add(pista);
-                        } else {
-                            pistasHaciaAtras.add(pista);
-                        }
-                    }
-
-                    // Ordenar la lista hacia adelante de manera ascendente
-                    Collections.sort(pistasHaciaAdelante);
-
-                    // Ordenar la lista hacia atrás de manera descendente
-                    Collections.sort(pistasHaciaAtras, Collections.reverseOrder());
-
-                    // Fusionar las listas
-                    ArrayList<Integer> pistasOrdenadas = new ArrayList<>(pistasHaciaAdelante);
-                    pistasOrdenadas.addAll(pistasHaciaAtras);
-
-                    int[] pistasc_look = new int[pistasOrdenadas.size()];
-
-                    for (int i = 0; i < pistasOrdenadas.size(); i++) {
-                        pistasc_look[i] = pistasOrdenadas.get(i);
-                    }
-                    
-                    ele.setElementos(pistasc_look);
-                    lookList.add(ele);
-                    
-                    int index = 1;
-                    int[] diferencias = new int[pistasOrdenadas.size()];
-                    for (Ejercicio lookList1 : lookList) {
-                        diferencias[0] = Math.abs(lookList1.getCabezal() - lookList1.getElementos()[0]);
-                        for (int i = 0; i < lookList1.getElementos().length; i++) {
-                            if (index < lookList1.getElementos().length) {
-                                diferencias[index] = Math.abs(lookList1.getElementos()[i] - lookList1.getElementos()[i + 1]);
-                                index++;
-                            } else {
-                                break;
-                            }
-                        }
-                        lookList1.setDiferencia(diferencias);
-                    }
-                    // Asignar los resultados a tu objeto 'ele'
-                    ele.setDiferencia(diferencias);
-
-                    //Calcular
-                    int tot = 0;
-                    double prom = 0;
-                    for (Ejercicio lookList1 : lookList) {
-
-                        for (int i = 0; i < lookList1.getDiferencia().length; i++) {
-                            tot += lookList1.getDiferencia()[i];
-                        }
-                        prom = (double) tot / lookList1.getDiferencia().length;
-                    }
-
-                    DecimalFormat df = new DecimalFormat("#.##");
-                    String promedioFormato = df.format(prom);
-
-                    total.setText("Total : " + tot);
-                    promedio.setText("Promedio : " + (promedioFormato));
-                    canvas.repaint();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Ingrese datos");
-                }
-            }
-        });
-        
-        reset.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                textAlgo.setText("");
-                total.setText("Total :");
-                promedio.setText("Promedio :");
-                text.setText("Limite 200 Pistas");
-                text1.setText("Limite 13 Elementos");
-                cad.clear(); 
-                fcfsList.clear(); 
-                c_scanList.clear(); 
-                sstfList.clear(); 
-                scanList.clear(); 
-                lookList.clear();
-                c_lookList.clear();
+                
+                DecimalFormat df = new DecimalFormat("#.##");
+                String promedioFormato = df.format(prom);
+                
+                total.setText("Total : " + tot);
+                promedio.setText("Promedio : " + (promedioFormato));
                 canvas.repaint();
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese datos");
             }
         });
         
-        guardarEjercicio.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (cad.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "No hay datos que guardar");
+        scan.addActionListener((ActionEvent e) -> {
+            if (!cad.isEmpty()) {
+                Ejercicio ele = new Ejercicio();
+                textAlgo.setText("SCAN");
+                text.setText("");
+                text1.setText("");
+                scanList.clear();
+                int cabezal = cad.get(0).getCabezal();
+                ele.setCabezal(cabezal);
+                ArrayList<Integer> pistas = new ArrayList<>();
+                
+                for (Ejercicio cad1 : cad) {
+                    for (int i = 0; i < cad1.getElementos().length; i++) {
+                        pistas.add(cad1.getElementos()[i]);
+                    }
                 }
-                else{
-                    fileManager = new Archivos(cad);
-                    fileManager.guardar();
+                if (!pistas.contains(0)) {
+                    pistas.add(0);
                 }
+                if (!pistas.contains(cad.get(0).getPistas() - 1)) {
+                    pistas.add(cad.get(0).getPistas() - 1);
+                }
+                
+                
+                // Ordenar las pistas de manera ascendente
+                Collections.sort(pistas);
+                
+                ArrayList<Integer> pistasHaciaAdelante = new ArrayList<>();
+                ArrayList<Integer> pistasHaciaAtras = new ArrayList<>();
+                
+                for (int pista : pistas) {
+                    if (pista >= cabezal) {
+                        pistasHaciaAdelante.add(pista);
+                    } else {
+                        pistasHaciaAtras.add(pista);
+                    }
+                }
+                
+                // Ordenar la lista hacia adelante de manera ascendente
+                Collections.sort(pistasHaciaAdelante);
+                
+                // Ordenar la lista hacia atrás de manera descendente
+                Collections.sort(pistasHaciaAtras, Collections.reverseOrder());
+                
+                // Fusionar las listas
+                ArrayList<Integer> pistasOrdenadas = new ArrayList<>(pistasHaciaAdelante);
+                pistasOrdenadas.addAll(pistasHaciaAtras);
+                
+                int[] pistasscan = new int[pistasOrdenadas.size()];
+                for (int i = 0; i < pistasOrdenadas.size(); i++) {
+                    pistasscan[i] = pistasOrdenadas.get(i);
+                }
+                
+                ele.setElementos(pistasscan);
+                scanList.add(ele);
+                
+                //calcular diferencias
+                int index = 1;
+                int[] diferencias = new int[pistasOrdenadas.size()];
+                for (Ejercicio scanList1 : scanList) {
+                    diferencias[0] = Math.abs(scanList1.getCabezal() - scanList1.getElementos()[0]);
+                    for (int i = 0; i < scanList1.getElementos().length; i++) {
+                        if (index < scanList1.getElementos().length) {
+                            diferencias[index] = Math.abs(scanList1.getElementos()[i] - scanList1.getElementos()[i + 1]);
+                            index++;
+                        } else {
+                            break;
+                        }
+                    }
+                    scanList1.setDiferencia(diferencias);
+                }
+                
+                // Asignar los resultados a tu objeto 'ele'
+                ele.setDiferencia(diferencias);
+                
+                //Calcular
+                int tot = 0;
+                double prom = 0;
+                for (Ejercicio scanList1 : scanList) {
+                    
+                    for (int i = 0; i < scanList1.getDiferencia().length; i++) {
+                        tot += scanList1.getDiferencia()[i];
+                    }
+                    prom = (double) tot / scanList1.getDiferencia().length;
+                }
+                
+                DecimalFormat df = new DecimalFormat("#.##");
+                String promedioFormato = df.format(prom);
+                
+                total.setText("Total : " + tot);
+                promedio.setText("Promedio : " + (promedioFormato));
+                canvas.repaint();
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese datos");
             }
         });
         
-        cargarEjercicio.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (cad.isEmpty()) {
-                    fileManager = new Archivos(cad);
-                    fileManager.cargar();
-                }else{
-                    JOptionPane.showMessageDialog(null, "Ya esta ejecutando un ejercicio");
+        c_look.addActionListener((ActionEvent e) -> {
+            if (!cad.isEmpty()) {
+                Ejercicio ele = new Ejercicio();
+                textAlgo.setText("C-LOOK");
+                text.setText("");
+                text1.setText("");
+                c_lookList.clear();
+                int cabezal = cad.get(0).getCabezal();
+                ele.setCabezal(cabezal);
+                ArrayList<Integer> pistas = new ArrayList<>();
+                
+                for (Ejercicio cad1 : cad) {
+                    for (int i = 0; i < cad1.getElementos().length; i++) {
+                        pistas.add(cad1.getElementos()[i]);
+                    }
                 }
+                
+                // Ordenar las pistas de manera ascendente
+                Collections.sort(pistas);
+                
+                // Inicializar arrays con el tamaño correcto
+                ArrayList<Integer> pistasHaciaAdelante = new ArrayList<>();
+                ArrayList<Integer> pistasHaciaAtras = new ArrayList<>();
+                
+                for (int pista : pistas) {
+                    if (pista >= cabezal) {
+                        pistasHaciaAdelante.add(pista);
+                    } else {
+                        pistasHaciaAtras.add(pista);
+                    }
+                }
+                
+                // Ordenar la lista hacia adelante de manera ascendente
+                Collections.sort(pistasHaciaAdelante);
+                
+                // Ordenar la lista hacia atrás de manera ascendente
+                Collections.sort(pistasHaciaAtras);
+                
+                // Fusionar las listas
+                ArrayList<Integer> pistasOrdenadas = new ArrayList<>(pistasHaciaAdelante);
+                pistasOrdenadas.addAll(pistasHaciaAtras);
+                
+                int[] pistasc_look = new int[pistasOrdenadas.size()];
+                
+                for (int i = 0; i < pistasOrdenadas.size(); i++) {
+                    pistasc_look[i] = pistasOrdenadas.get(i);
+                }
+                
+                ele.setElementos(pistasc_look);
+                c_lookList.add(ele);
+                
+                //calcular diferencias
+                int index = 1;
+                int[] diferencias = new int[pistasOrdenadas.size()];
+                for (Ejercicio c_lookList1 : c_lookList) {
+                    diferencias[0] = Math.abs(c_lookList1.getCabezal() - c_lookList1.getElementos()[0]);
+                    for (int i = 0; i < c_lookList1.getElementos().length; i++) {
+                        if (index < c_lookList1.getElementos().length) {
+                            diferencias[index] = Math.abs(c_lookList1.getElementos()[i] - c_lookList1.getElementos()[i + 1]);
+                            index++;
+                        } else {
+                            break;
+                        }
+                    }
+                    c_lookList1.setDiferencia(diferencias);
+                }
+                // Asignar los resultados a tu objeto 'ele'
+                ele.setDiferencia(diferencias);
+                
+                //Calcular
+                int tot = 0;
+                double prom = 0;
+                for (Ejercicio c_lookList1 : c_lookList) {
+                    
+                    for (int i = 0; i < c_lookList1.getDiferencia().length; i++) {
+                        tot += c_lookList1.getDiferencia()[i];
+                    }
+                    prom = (double) tot / c_lookList1.getDiferencia().length;
+                }
+                
+                DecimalFormat df = new DecimalFormat("#.##");
+                String promedioFormato = df.format(prom);
+                
+                total.setText("Total : " + tot);
+                promedio.setText("Promedio : " + (promedioFormato));
+                canvas.repaint();
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese datos");
+            }
+        });
+        
+        look.addActionListener((ActionEvent e) -> {
+            if(!cad.isEmpty()){
+                Ejercicio ele = new Ejercicio();
+                textAlgo.setText("LOOK");
+                text.setText("");
+                text1.setText("");
+                lookList.clear();
+                int cabezal = cad.get(0).getCabezal();
+                ele.setCabezal(cabezal);
+                ArrayList<Integer> pistas = new ArrayList<>();
+                
+                for (Ejercicio cad1 : cad) {
+                    for (int i = 0; i < cad1.getElementos().length; i++) {
+                        pistas.add(cad1.getElementos()[i]);
+                    }
+                }
+                
+                // Ordenar las pistas de manera ascendente
+                Collections.sort(pistas);
+                
+                ArrayList<Integer> pistasHaciaAdelante = new ArrayList<>();
+                ArrayList<Integer> pistasHaciaAtras = new ArrayList<>();
+                
+                for (int pista : pistas) {
+                    if (pista >= cabezal) {
+                        pistasHaciaAdelante.add(pista);
+                    } else {
+                        pistasHaciaAtras.add(pista);
+                    }
+                }
+                
+                // Ordenar la lista hacia adelante de manera ascendente
+                Collections.sort(pistasHaciaAdelante);
+                
+                // Ordenar la lista hacia atrás de manera descendente
+                Collections.sort(pistasHaciaAtras, Collections.reverseOrder());
+                
+                // Fusionar las listas
+                ArrayList<Integer> pistasOrdenadas = new ArrayList<>(pistasHaciaAdelante);
+                pistasOrdenadas.addAll(pistasHaciaAtras);
+                
+                int[] pistasc_look = new int[pistasOrdenadas.size()];
+                
+                for (int i = 0; i < pistasOrdenadas.size(); i++) {
+                    pistasc_look[i] = pistasOrdenadas.get(i);
+                }
+                
+                ele.setElementos(pistasc_look);
+                lookList.add(ele);
+                
+                int index = 1;
+                int[] diferencias = new int[pistasOrdenadas.size()];
+                for (Ejercicio lookList1 : lookList) {
+                    diferencias[0] = Math.abs(lookList1.getCabezal() - lookList1.getElementos()[0]);
+                    for (int i = 0; i < lookList1.getElementos().length; i++) {
+                        if (index < lookList1.getElementos().length) {
+                            diferencias[index] = Math.abs(lookList1.getElementos()[i] - lookList1.getElementos()[i + 1]);
+                            index++;
+                        } else {
+                            break;
+                        }
+                    }
+                    lookList1.setDiferencia(diferencias);
+                }
+                // Asignar los resultados a tu objeto 'ele'
+                ele.setDiferencia(diferencias);
+                
+                //Calcular
+                int tot = 0;
+                double prom = 0;
+                for (Ejercicio lookList1 : lookList) {
+                    
+                    for (int i = 0; i < lookList1.getDiferencia().length; i++) {
+                        tot += lookList1.getDiferencia()[i];
+                    }
+                    prom = (double) tot / lookList1.getDiferencia().length;
+                }
+                
+                DecimalFormat df = new DecimalFormat("#.##");
+                String promedioFormato = df.format(prom);
+                
+                total.setText("Total : " + tot);
+                promedio.setText("Promedio : " + (promedioFormato));
+                canvas.repaint();
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese datos");
+            }
+        });
+        
+        reset.addActionListener((ActionEvent e) -> {
+            textAlgo.setText("");
+            total.setText("Total :");
+            promedio.setText("Promedio :");
+            text.setText("Limite 200 Pistas");
+            text1.setText("Limite 13 Elementos");
+            cad.clear();
+            fcfsList.clear();
+            c_scanList.clear();
+            sstfList.clear();
+            scanList.clear();
+            lookList.clear();
+            c_lookList.clear();
+            canvas.repaint();
+        });
+        
+        guardarEjercicio.addActionListener((ActionEvent e) -> {
+            if (cad.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "No hay datos que guardar");
+            }
+            else{
+                fileManager = new Archivos(cad);
+                fileManager.guardar();
+            }
+        });
+        
+        cargarEjercicio.addActionListener((ActionEvent e) -> {
+            if (cad.isEmpty()) {
+                fileManager = new Archivos(cad);
+                fileManager.cargar();
+            }else{
+                JOptionPane.showMessageDialog(null, "Ya esta ejecutando un ejercicio");
             }
         });
     }
